@@ -35,10 +35,10 @@ def index():
 @app.route('/scrape', methods=['POST'])
 def scrape(): 
     selected_city = request.form['city']
-    mobile_emulation = {
-    "deviceMetrics": { "width": 375, "height": 812, "pixelRatio": 3.0 },
-    "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
-    }
+    # mobile_emulation = {
+    # "deviceMetrics": { "width": 375, "height": 812, "pixelRatio": 3.0 },
+    # "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+    # }
 
     chrome_options = ChromeOptions()
     chrome_options.add_argument('--headless')
@@ -69,10 +69,9 @@ def scrape():
     time.sleep(2)
     driver.find_element(By.CLASS_NAME,"_2peD4").click()
 
-    time.sleep(2)
-    driver.implicitly_wait(5)
 
-    time.sleep(2)
+
+    time.sleep(1)
     driver.implicitly_wait(5)
 
     #driver.get("https://www.swiggy.com/instamart/category-listing?categoryName=Fresh+Vegetables&custom_back=true&taxonomyType=All+Listing")
@@ -129,7 +128,7 @@ def scrape():
 "https://www.swiggy.com/instamart/category-listing?categoryName=Cereals+and+Breakfast&custom_back=true&taxonomyType=All+Listing",
 "https://www.swiggy.com/instamart/category-listing?categoryName=Sauces+and+Spreads&custom_back=true&taxonomyType=All+Listing",
 "https://www.swiggy.com/instamart/category-listing?categoryName=Tea%2C+Coffee+and+More&custom_back=true&taxonomyType=All+Listing"
-,
+
 
 ]
     for i in bang_links:
